@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Admin Dashboard</h1>
+            <nav>
+                <div class="dropdown">
+                    <button class="dropbtn">Dashboard</button>
+                    <div class="dropdown-content">
+                        <a href="#" id="dashboard-overview">Overview</a>
+                        <a href="#" id="dashboard-analytics">Analytics</a>
+                    </div>
+                </div>
+                <div class="dropdown">
+                    <button class="dropbtn">Buses</button>
+                    <div class="dropdown-content">
+                        <a href="#" id="buses-manage">Manage Buses</a>
+                        <a href="#" id="buses-add">Add Bus</a>
+                    </div>
+                </div>
+                <div class="dropdown">
+                    <button class="dropbtn">Schedules</button>
+                    <div class="dropdown-content">
+                        <a href="#" id="schedules-manage">Manage Schedules</a>
+                        <a href="#" id="schedules-view">View Schedules</a>
+                    </div>
+                </div>
+                <div class="dropdown">
+                    <button class="dropbtn">Bookings</button>
+                    <div class="dropdown-content">
+                        <a href="#" id="bookings-manage">Manage Bookings</a>
+                        <a href="#" id="bookings-history">Booking History</a>
+                    </div>
+                </div>
+                <div class="dropdown">
+                    <button class="dropbtn">Users</button>
+                    <div class="dropdown-content">
+                        <a href="#" id="users-manage">Manage Users</a>
+                        <a href="#" id="users-add">Add User</a>
+                    </div>
+                </div>
+                <div class="dropdown">
+                    <button class="dropbtn">Settings</button>
+                    <div class="dropdown-content">
+                        <a href="#" id="settings-profile">Profile Settings</a>
+                        <a href="#" id="settings-system">System Settings</a>
+                    </div>
+                </div>
+            </nav>
+        </header>
+        <main>
+            <section id="dashboard" class="section active">
+                <h2>Dashboard Overview</h2>
+                <div class="overview">
+                    <div class="card">
+                        <h3>Total Buses</h3>
+                        <p id="total-buses">0</p>
+                    </div>
+                    <div class="card">
+                        <h3>Total Bookings</h3>
+                        <p id="total-bookings">0</p>
+                    </div>
+                    <div class="card">
+                        <h3>Total Users</h3>
+                        <p id="total-users">0</p>
+                    </div>
+                </div>
+                <section class="recent-activities">
+                    <h3>Recent Activities</h3>
+                    <ul id="activities-list"></ul>
+                </section>
+            </section>
+
+            <section id="buses" class="section hidden">
+                <h2>Manage Buses</h2>
+                <button id="add-bus-btn">Add Bus</button>
+                <div id="bus-form" class="hidden">
+                    <h3>Add New Bus</h3>
+                    <form id="bus-form-element">
+                        <label for="bus-number">Bus Number:</label>
+                        <input type="text" id="bus-number" name="bus-number" required>
+                        <label for="seats">Seats:</label>
+                        <input type="number" id="seats" name="seats" required>
+                        <label for="route">Route:</label>
+                        <input type="text" id="route" name="route" required>
+                        <label for="time-of-travel">Time of Travel:</label>
+                        <input type="datetime-local" id="time-of-travel" name="time-of-travel" required>
+                        <label for="price-per-seat">Price per Seat:</label>
+                        <input type="number" id="price-per-seat" name="price-per-seat" required>
+                        <button type="submit">Add Bus</button>
+                    </form>
+                </div>
+                <ul id="bus-list"></ul>
+            </section>
+        </main>
+    </div>
+    <script src="scripts.js"></script>
+</body>
+</html>
