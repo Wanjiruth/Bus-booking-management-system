@@ -8,21 +8,21 @@ document.addEventListener('DOMContentLoaded', function () {
             e.preventDefault();
             sections.forEach(section => section.classList.remove('active'));
             navItems.forEach(item => item.classList.remove('active'));
-            const targetId = navItem.id.replace('nav-', '');
+            const targetId = this.id.replace('dashboard-', '').replace('buses-', '').replace('schedules-', '').replace('bookings-', '').replace('users-', '').replace('settings-', '');
             document.getElementById(targetId).classList.add('active');
-            navItem.classList.add('active');
         });
     });
 
-    // Bus Management
+    // Handle adding a bus
     const addBusBtn = document.getElementById('add-bus-btn');
     const busForm = document.getElementById('bus-form');
+    const busFormElement = document.getElementById('bus-form-element');
+    const busList = document.getElementById('bus-list');
+
     addBusBtn.addEventListener('click', function () {
         busForm.classList.toggle('hidden');
     });
 
-    const busList = document.getElementById('bus-list');
-    const busFormElement = document.getElementById('bus-form-element');
     busFormElement.addEventListener('submit', function (e) {
         e.preventDefault();
         const busNumber = document.getElementById('bus-number').value;
@@ -30,27 +30,12 @@ document.addEventListener('DOMContentLoaded', function () {
         const route = document.getElementById('route').value;
         const timeOfTravel = document.getElementById('time-of-travel').value;
         const pricePerSeat = document.getElementById('price-per-seat').value;
-
-        const li = document.createElement('li');
-        li.textContent = `Bus Number: ${busNumber}, Seats: ${seats}, Route: ${route}, Time of Travel: ${timeOfTravel}, Price per Seat: ${pricePerSeat}`;
-        busList.appendChild(li);
-
-        busForm.classList.add('hidden');
+        
+        const busItem = document.createElement('li');
+        busItem.textContent = `Bus Number: ${busNumber}, Seats: ${seats}, Route: ${route}, Time: ${timeOfTravel}, Price: ${pricePerSeat}`;
+        busList.appendChild(busItem);
+        
         busFormElement.reset();
-    });
-
-    // Recent Activities
-    const activities = [
-        'User John booked a seat on Bus 101.',
-        'Bus 202 schedule updated.',
-        'User Alice canceled her booking on Bus 303.',
-        'New bus added: Bus 404.',
-    ];
-
-    const activitiesList = document.getElementById('activities-list');
-    activities.forEach(activity => {
-        const li = document.createElement('li');
-        li.textContent = activity;
-        activitiesList.appendChild(li);
+        busForm.classList.add('hidden');
     });
 });
